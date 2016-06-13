@@ -1,0 +1,259 @@
+@import url(https://fonts.googleapis.com/css?family=Kanit|Open+Sans);
+
+.mapboxgl-popup-content {
+  background: #525252;
+  padding-bottom: 5px;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+    border-bottom-color: #525252;
+}
+
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip {
+    border-bottom-color: #525252;
+}
+
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+    border-bottom-color: #525252;
+}
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+    border-top-color: #525252;
+}
+
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip {
+    border-top-color: #525252;
+}
+
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+    border-top-color: #525252;
+}
+
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    border-right-color: #525252;
+}
+
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    border-left-color: #525252;
+}
+
+.mapboxgl-popup {
+  padding-bottom: 0;
+  max-width: 400px;
+  font-weight: 300;
+  font-family: 'Open Sans', 'Kanit', 'sans-serif';
+  color: #f4f4f4;
+}
+
+body {
+  font-family: 'Open Sans', 'Kanit', 'sans-serif';
+}
+
+.popup p {
+  margin: 0;
+  padding: 0 5px 0 5px;
+  min-width: 200px;
+}
+
+.popup .title {
+  font-size: 120%;
+  font-weight: 400;
+  margin: 0 0 5px 0;
+}
+
+.popup .read-more {
+  font-size: 90%;
+  text-align: right;
+  text-decoration: underline;
+}
+
+.popup .read-more a:link {
+  color: #f4f4f4;
+}
+
+.popup .read-more a:visited {
+  color: #f4f4f4;
+}
+
+.popup .read-more a:hover {
+  color: #fff;
+}
+
+.control-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  padding: 15px 10px 5px 10px;
+  width: 20%;
+  min-width: 200px;
+  max-width: 400px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+  color: #fff;
+}
+
+.bold {
+  font-weight: bold;
+  color: #000;
+}
+
+.info-panel {
+  z-index: 999;
+  position: fixed;
+  height: 260px;
+  width: 100%;
+  bottom: -300px;
+  color: #6e6e6e;
+  background-color: #f0f0f0;
+  transition: bottom 1s;
+}
+
+#info-link a, #info-link a:link, #info-link a:visited {
+  color: #6e6e6e;
+  text-decoration: underline;
+}
+
+#info-link a:hover {
+  color: #8e8e8e;
+  text-decoration: underline;
+}
+
+#info-container {
+  width: 50%;
+  min-width: 300px;
+  max-width: 400px;
+  margin: 0 auto 0 auto;
+}
+
+#info-title {
+  text-align: center;
+  font-size: 160%;
+  line-height: 140%;
+  margin: 30px auto 30px auto;
+}
+
+#info-date, #info-distance, #info-link {
+  text-align: left;
+  font-size: 90%;
+  margin: 5px 0 5px;
+}
+
+#map {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+#right-button-container {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  width: 50px;
+}
+
+.right-button-container {
+  transition: right 1s;
+}
+
+.right-button-container-no-transition {
+  transition: none !important;
+}
+
+.right-button, .right-button-selected {
+  width: 50px;
+  height: 50px;
+}
+
+.right-button {
+  background-color: #f1f1f1;
+}
+
+.right-button-selected, .right-button:hover {
+  background-color: #d3d3d3;
+}
+
+.right-button:hover {
+  cursor: pointer;
+}
+
+/*#search-button img {
+  margin: 10px;
+}
+
+#bookmark-button img {
+  margin: 12px;
+}*/
+
+#search-icon, #bookmark-icon {
+  font-size: 36px;
+  text-align: center;
+  margin: 0;
+}
+
+#search-icon {
+  color: #505050;
+}
+
+#bookmark-icon {
+  color: #f3d35d;
+}
+
+#right-panel {
+  z-index: 999;
+  position: fixed;
+  height: 100%;
+  width: 300px;
+  right: -300px;
+  background-color: #fff;
+  transition: right 1s;
+  font-size: 80%;
+}
+
+#right-panel-header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  background-color: #525252;
+  color: #fff;
+}
+
+#right-panel-header-text {
+  font-size: 130%;
+  margin: 14px 20px 10px;
+}
+
+.right-panel-content {
+  padding: 20px;
+  color: #8e8e8e;
+}
+
+.form-group {
+  color: #8e8e8e;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  margin-bottom: 10px;
+}
+
+.form-group input {
+  color: #6e6e6e;
+}
+
+.form-control {
+  height: 30px;
+}
+
+.checkbox-label {
+  margin-left: 8px;
+}
+
+#search-submit-button {
+  width: 100%;
+}
