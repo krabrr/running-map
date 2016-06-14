@@ -86,6 +86,12 @@
       <p id='info-date'></p>
       <p id='info-distance'></p>
       <p id='info-link'></p>
+      <div class='info-bookmark'>
+        <div id='info-bookmark-icon' class='ion-ios-star-outline info-bookmark-icon'></div>
+        <div class='info-bookmark-text-container'>
+          <span class='info-bookmark-text'>Bookmark</span>
+        </div>
+      </div>
     </div>
   </div>
 
