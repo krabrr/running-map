@@ -1,53 +1,20 @@
+/*------------------------------------*
+              Add Font
+*------------------------------------*/
+
 @import url(https://fonts.googleapis.com/css?family=Kanit|Open+Sans);
-
-.mapboxgl-popup-content {
-  background: #525252;
-  padding-bottom: 5px;
-}
-
-.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
-    border-bottom-color: #525252;
-}
-
-.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip {
-    border-bottom-color: #525252;
-}
-
-.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
-    border-bottom-color: #525252;
-}
-
-.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
-    border-top-color: #525252;
-}
-
-.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip {
-    border-top-color: #525252;
-}
-
-.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
-    border-top-color: #525252;
-}
-
-.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
-    border-right-color: #525252;
-}
-
-.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
-    border-left-color: #525252;
-}
-
-.mapboxgl-popup {
-  padding-bottom: 0;
-  max-width: 400px;
-  font-weight: 300;
-  font-family: 'Open Sans', 'Kanit', 'sans-serif';
-  color: #f4f4f4;
-}
 
 body {
   font-family: 'Open Sans', 'Kanit', 'sans-serif';
 }
+
+
+
+
+
+/*------------------------------------*
+            Tooltip / popup
+*------------------------------------*/
 
 .popup p {
   margin: 0;
@@ -100,6 +67,13 @@ body {
   font-weight: bold;
   color: #000;
 }
+
+
+
+
+/*------------------------------------*
+          Information Panel
+*------------------------------------*/
 
 .info-panel {
   z-index: 999;
@@ -164,12 +138,13 @@ body {
   font-size: 120%;
 }
 
-#map {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-}
+
+
+
+
+/*------------------------------------*
+          button Collapse
+*------------------------------------*/
 
 #right-button-container {
   position: fixed;
@@ -235,7 +210,15 @@ body {
   background-color: #fff;
   transition: right 1s;
   font-size: 80%;
+  overflow-y: auto;
 }
+
+// @media (max-width: 420px) {
+//   #right-panel {
+//     width: 250px;
+//     right: -250px;
+//   }
+// }
 
 #right-panel-header {
   width: 100%;
@@ -243,6 +226,7 @@ body {
   display: flex;
   background-color: #525252;
   color: #fff;
+  position: fixed;
 }
 
 #right-panel-header-text {
@@ -251,7 +235,7 @@ body {
 }
 
 .right-panel-content {
-  padding: 20px;
+  padding: 70px 20px 20px;
   color: #8e8e8e;
 }
 
@@ -279,3 +263,4 @@ body {
 #search-submit-button {
   width: 100%;
 }
+
