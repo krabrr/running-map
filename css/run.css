@@ -142,6 +142,28 @@ body {
   margin: 5px 0 5px;
 }
 
+.info-bookmark {
+  display: flex;
+  width: 120px;
+  margin: 20px auto 0 auto;
+}
+
+.info-bookmark:hover {
+  cursor: pointer;
+}
+
+.info-bookmark-icon {
+  display: inline;
+  font-size: 32px;
+  margin: auto;
+}
+
+.info-bookmark-text-container {
+  display: inline;
+  margin: auto;
+  font-size: 120%;
+}
+
 #map {
   position: fixed;
   top: 0;
