@@ -119,7 +119,7 @@ body {
 .info-bookmark {
   display: flex;
   width: 120px;
-  margin: 20px auto 0 auto;
+  margin: 26px auto 0 auto;
 }
 
 .info-bookmark:hover {
