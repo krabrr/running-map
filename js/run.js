@@ -12,7 +12,8 @@ var map, markers, layerIDs = [], featureMap = {},
   popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false
-});
+  }),
+  bookmarkedIds = [];
 
 function initial(data) {
   markers = data;
@@ -96,13 +97,31 @@ function showMoreInfo(layerID) {
   var titleInfo = document.getElementById('info-title'),
     dateInfo = document.getElementById('info-date'),
     distanceInfo = document.getElementById('info-distance'),
-    linkInfo = document.getElementById('info-link');
+    linkInfo = document.getElementById('info-link'),
+    bookmark = document.getElementById('info-bookmark'),
+    currentId = feature.properties.id;
 
   titleInfo.innerHTML = feature.properties.name;
   dateInfo.innerHTML = '<span class="bold">Date :</span> ' + feature.properties.dateDisplay;
   distanceInfo.innerHTML = '<span class="bold">Distance :</span> ' + feature.properties.distanceDisplay;
   linkInfo.innerHTML = '<span class="bold">Website :</span> <a href="' + feature.properties.link + '">'
     + feature.properties.linkDisplay + '</a>';
+  
+  bookmark.addEventListener('click', function () {
+    var bookmarkIcon = document.getElementById('info-bookmark-icon');
+    if (bookmarkedIds.indexOf(currentId) < 0) {
+      bookmarkIcon.className = 'ion-ios-star info-bookmark-icon';
+      bookmarkIcon.style.color = '#f3d35d';
+      bookmarkedIds.push(currentId);
+    } else {
+      bookmarkIcon.className = 'ion-ios-star-outline info-bookmark-icon';
+      bookmarkIcon.style.color = '#d3d3d3';
+      bookmarkedIds.splice(bookmarkedIds.indexOf(currentId), 1);
+    }
+  });
+
+
+
 }
 
 function buttonClickedHandler(event) {
