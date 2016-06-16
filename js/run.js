@@ -1,5 +1,5 @@
 var map, markers, layerIDs = [], featureMap = {},
-  center = [100.522431, 13.829216],
+  center = [100.522431, 13.829216], currentId,
   infoPanel = document.getElementById('info-panel'),
   controlPanel = document.getElementById('control-panel'),
   rightButtonContainer = document.getElementById('right-button-container'),
@@ -9,6 +9,8 @@ var map, markers, layerIDs = [], featureMap = {},
   rightPanelHeaderText = document.getElementById('right-panel-header-text'),
   searchPanel = document.getElementById('search-panel'),
   bookmarkPanel = document.getElementById('bookmark-panel'),
+  bookmarkInfo = document.getElementById('info-bookmark'),
+  bookmarkIcon = document.getElementById('info-bookmark-icon'),
   popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false
@@ -27,8 +29,9 @@ function initial(data) {
   map.on('load', mapOnLoad);
   map.on('click', mapOnClick);
   map.on('mousemove', mapOnMouseMove);
-  searchButton.addEventListener('click', buttonClickedHandler)
-  bookmarkButton.addEventListener('click', buttonClickedHandler)
+  searchButton.addEventListener('click', buttonClickedHandler);
+  bookmarkButton.addEventListener('click', buttonClickedHandler);
+  bookmarkInfo.addEventListener('click', bookmarkClickedHandler);
 }
 
 function mapOnLoad() {
@@ -97,31 +100,75 @@ function showMoreInfo(layerID) {
   var titleInfo = document.getElementById('info-title'),
     dateInfo = document.getElementById('info-date'),
     distanceInfo = document.getElementById('info-distance'),
-    linkInfo = document.getElementById('info-link'),
-    bookmark = document.getElementById('info-bookmark'),
-    currentId = feature.properties.id;
-
+    linkInfo = document.getElementById('info-link');
+  
+  currentId = feature.properties.id;
   titleInfo.innerHTML = feature.properties.name;
   dateInfo.innerHTML = '<span class="bold">Date :</span> ' + feature.properties.dateDisplay;
   distanceInfo.innerHTML = '<span class="bold">Distance :</span> ' + feature.properties.distanceDisplay;
   linkInfo.innerHTML = '<span class="bold">Website :</span> <a href="' + feature.properties.link + '">'
     + feature.properties.linkDisplay + '</a>';
   
-  bookmark.addEventListener('click', function () {
-    var bookmarkIcon = document.getElementById('info-bookmark-icon');
-    if (bookmarkedIds.indexOf(currentId) < 0) {
-      bookmarkIcon.className = 'ion-ios-star info-bookmark-icon';
-      bookmarkIcon.style.color = '#f3d35d';
-      bookmarkedIds.push(currentId);
-    } else {
-      bookmarkIcon.className = 'ion-ios-star-outline info-bookmark-icon';
-      bookmarkIcon.style.color = '#d3d3d3';
-      bookmarkedIds.splice(bookmarkedIds.indexOf(currentId), 1);
+  if (bookmarkedIds.indexOf(currentId) < 0) {
+    bookmarkIcon.className = 'ion-ios-star-outline info-bookmark-icon';
+    bookmarkIcon.style.color = '#d3d3d3';
+  } else {
+    bookmarkIcon.className = 'ion-ios-star info-bookmark-icon';
+    bookmarkIcon.style.color = '#f3d35d';
+  }
+}
+
+function bookmarkClickedHandler(event) {
+  if (bookmarkedIds.indexOf(currentId) < 0) {
+    bookmarkIcon.className = 'ion-ios-star info-bookmark-icon';
+    bookmarkIcon.style.color = '#f3d35d';
+    bookmarkedIds.push(currentId);
+  } else {
+    bookmarkIcon.className = 'ion-ios-star-outline info-bookmark-icon';
+    bookmarkIcon.style.color = '#d3d3d3';
+    bookmarkedIds.splice(bookmarkedIds.indexOf(currentId), 1);
+  }
+  updateBookmarkList();
+}
+
+function updateBookmarkList() {
+  var i, att, bookmarkId, container, icon, node, nodeContent,
+    caret, exportButtonContainer, exportButton, menu, item,
+    bookmarkPanel = document.getElementById('bookmark-panel');
+  
+  // remove all child except dropdown
+  while (bookmarkPanel.firstChild && bookmarkPanel.firstChild.className != 'btn-group') {
+    bookmarkPanel.removeChild(bookmarkPanel.firstChild);
+  }
+  
+  if (!bookmarkedIds.length) {
+    node = document.createElement('p');
+    nodeContent = document.createTextNode('No Favorite Event');
+    node.appendChild(nodeContent);
+    bookmarkPanel.insertBefore(node, bookmarkPanel.firstChild);
+    return;
+  }
+  
+  for (i = 0; i < bookmarkedIds.length; i++) {
+    bookmarkId = bookmarkedIds[i];
+    feature = featureMap[bookmarkId];
+    if (!feature) {
+      continue;
     }
-  });
-
-
-
+    container = document.createElement('div');
+    container.className = 'right-panel-bookmark-container';
+    container.style.display = 'flex';
+    icon = document.createElement('div');
+    icon.className = 'ion-ios-star right-panel-bookmark-icon';
+    node = document.createElement('p');
+    node.id = bookmarkId;
+    node.className = 'right-panel-bookmark-text';
+    nodeContent = document.createTextNode(feature.properties.name);
+    node.appendChild(nodeContent);
+    container.appendChild(icon);
+    container.appendChild(node);
+    bookmarkPanel.insertBefore(container, bookmarkPanel.firstChild);
+  }
 }
 
 function buttonClickedHandler(event) {
@@ -135,6 +182,7 @@ function buttonClickedHandler(event) {
     }
   } else {
     if (target.className == 'right-button') {
+      updateBookmarkList();
       target.className = 'right-button-selected';
       searchButton.className = 'right-button';
     } else {

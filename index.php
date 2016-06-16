@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>RUNNING MAP</title>
   <script src='https://api.mapbox.com/mapbox-gl-js/v0.19.1/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v0.19.1/mapbox-gl.css' rel='stylesheet'/>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css' integrity='sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd' crossorigin='anonymous'>
+  
   <link rel='stylesheet' href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
   <link rel='stylesheet' href='css/map.css'>
   <link rel='stylesheet' href='css/run.css'>
-  <link rel="shortcut icon" href="images/favicon.png">
+  <link rel='shortcut icon' href='images/favicon.png'>
 
-  <meta property="og:title" content="RUNNING MAP"/>
-  <meta property="og:url" content="http://nbaramichai.com/running-map.php"/>
-  <meta property="og:site_name" content="nbaramichai"/>
-  <meta property="og:image" content="images/share-image.png"/>
+  <meta property='og:title' content='RUNNING MAP'/>
+  <meta property='og:url' content='http://nbaramichai.com/running-map.php'/>
+  <meta property='og:site_name' content='nbaramichai'/>
+  <meta property='og:image' content='images/share-image.png'/>
 </head>
 <body>
   <?php
@@ -149,12 +150,27 @@
       </form>
     </div>
     <div id='bookmark-panel' class='right-panel-content'>
-      <p>Coming Soon...</p>
+      
+      <!-- Single button -->
+      <div class='btn-group'>
+        <button type='button' class='btn btn-secondary dropdown-toggle right-panel-export-bookmark' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+          Export Events
+        </button>
+        <div class='dropdown-menu'>
+          <a class='dropdown-item' href='#'>iCalendar</a>
+          <a class='dropdown-item' href='#'>Google Calendar</a>
+        </div>
+      </div>
+
+
     </div>
   </div>
 
   <div id='map'></div>
   <script type='application/javascript' src='js/run.js'></script>
   <?php echo "<script>initial($data);</script>"; ?>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 </body>
 </html>
