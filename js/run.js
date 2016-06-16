@@ -157,7 +157,6 @@ function updateBookmarkList() {
     }
     container = document.createElement('div');
     container.className = 'right-panel-bookmark-container';
-    container.style.display = 'flex';
     icon = document.createElement('div');
     icon.className = 'ion-ios-star right-panel-bookmark-icon';
     node = document.createElement('p');

@@ -273,6 +273,8 @@ body {
 
 .right-panel-bookmark-container {
   margin-bottom: 10px;
+  display: flex;
+  display: -webkit-flex;
 }
 
 .right-panel-bookmark-icon {
