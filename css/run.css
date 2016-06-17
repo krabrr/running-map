@@ -289,6 +289,11 @@ body {
   font-size: 120%;
 }
 
+.btn-group, .dropdown-menu {
+  width: 100%;
+}
+
 .right-panel-export-bookmark {
-  margin: 10px auto;
+  margin: 10px auto 2px auto;
+  width: 100%;
 }

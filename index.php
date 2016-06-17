@@ -157,8 +157,8 @@
           Export Events
         </button>
         <div class='dropdown-menu'>
-          <a class='dropdown-item' href='#'>iCalendar</a>
-          <a class='dropdown-item' href='#'>Google Calendar</a>
+          <a id='icalendar' class='dropdown-item' href='#'>iCalendar</a>
+          <a id='gcalendar' class='dropdown-item' href='#'>Google Calendar</a>
         </div>
       </div>
 
@@ -167,8 +167,23 @@
   </div>
 
   <div id='map'></div>
-  <script type='application/javascript' src='js/run.js'></script>
+  <script src='js/run.js'></script>
   <?php echo "<script>initial($data);</script>"; ?>
+  <script>
+    var iCalendar = document.getElementById('icalendar'),
+      gCalendar = document.getElementById('gcalendar');
+    
+    iCalendar.addEventListener('click', exportICalendar);
+    gCalendar.addEventListener('click', exportGCalendar);
+    
+    function exportICalendar() {
+      
+    }
+    
+    function exportGCalendar() {
+      
+    }
+  </script>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
