@@ -15,10 +15,10 @@
   <link rel='stylesheet' href='css/run.css'>
   <link rel='shortcut icon' href='images/favicon.png'>
 
-  <meta property='og:title' content='RUNNING MAP'/>
-  <meta property='og:url' content='http://nbaramichai.com/running-map/index.php'/>
-  <meta property='og:site_name' content='nbaramichai'/>
-  <meta property='og:image' content='http://nbaramichai.com/running-map/images/share-image.png'/>
+  <meta property='og:title' content='RUNNING MAP' />
+  <meta property='og:url' content='http://nbaramichai.com/running-map/' />
+  <meta property='og:site_name' content='nbaramichai' />
+  <meta property='og:image' content='http://nbaramichai.com/running-map/images/share-image.png' />
 </head>
 <body>
   <?php
