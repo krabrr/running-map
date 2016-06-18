@@ -84,6 +84,7 @@ body {
   color: #6e6e6e;
   background-color: #f0f0f0;
   transition: bottom 1s;
+  overflow-y: auto;
 }
 
 #info-link a, #info-link a:link, #info-link a:visited {
