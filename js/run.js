@@ -1,6 +1,7 @@
 var map, markers, layerIDs = [], featureMap = {},
   center = [100.522431, 13.829216], currentId,
   infoPanel = document.getElementById('info-panel'),
+  infoCloseButton = document.getElementById('info-close'),
   controlPanel = document.getElementById('control-panel'),
   rightButtonContainer = document.getElementById('right-button-container'),
   searchButton = document.getElementById('search-button'),
@@ -31,6 +32,7 @@ function initial(data) {
   map.on('load', mapOnLoad);
   map.on('click', mapOnClick);
   map.on('mousemove', mapOnMouseMove);
+  infoCloseButton.addEventListener('click', hideInfo);
   searchButton.addEventListener('click', buttonClickedHandler);
   bookmarkButton.addEventListener('click', buttonClickedHandler);
   bookmarkInfo.addEventListener('click', bookmarkClickedHandler);
@@ -120,6 +122,10 @@ function showMoreInfo(layerID) {
     bookmarkIcon.className = 'ion-ios-star info-bookmark-icon';
     bookmarkIcon.style.color = '#f3d35d';
   }
+}
+
+function hideInfo(event) {
+  infoPanel.style.bottom = '-300px';
 }
 
 function bookmarkClickedHandler(event) {

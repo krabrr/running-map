@@ -9,7 +9,7 @@
   <script src='https://api.mapbox.com/mapbox-gl-js/v0.19.1/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v0.19.1/mapbox-gl.css' rel='stylesheet'/>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css' integrity='sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd' crossorigin='anonymous'>
-  
+
   <link rel='stylesheet' href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
   <link rel='stylesheet' href='css/map.css'>
   <link rel='stylesheet' href='css/run.css'>
@@ -111,6 +111,7 @@
   </div> -->
 
   <div class='info-panel' id='info-panel'>
+    <button type='button' id='info-close' class='close info-close' data-dismiss='modal'>&times;</button>
     <div id='info-container'>
       <h4 id='info-title'></h4>
       <p id='info-date'></p>
@@ -169,7 +170,7 @@
       </form>
     </div>
     <div id='bookmark-panel' class='right-panel-content'>
-      
+
       <!-- Single button -->
       <div class='btn-group'>
         <button type='button' class='btn btn-secondary dropdown-toggle right-panel-export-bookmark' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
@@ -188,7 +189,7 @@
   <div id='map'></div>
   <script src='js/run.js'></script>
   <?php echo "<script>initial($data);</script>"; ?>
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 </body>

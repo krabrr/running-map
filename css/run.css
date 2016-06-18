@@ -87,6 +87,11 @@ body {
   overflow-y: auto;
 }
 
+.info-close {
+  margin: 10px;
+  font-size: 2rem;
+}
+
 #info-link a, #info-link a:link, #info-link a:visited {
   color: #6e6e6e;
   text-decoration: underline;
