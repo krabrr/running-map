@@ -18,7 +18,7 @@
   <meta property='og:title' content='RUNNING MAP' />
   <meta property='og:url' content='http://nbaramichai.com/running-map/' />
   <meta property='og:site_name' content='nbaramichai' />
-  <meta property='og:image' content='http://nbaramichai.com/running-map/images/share-image.png' />
+  <meta property='og:image' content='http://nbaramichai.com/running-map/images/preview.jpg' />
   <meta property='fb:app_id' content='1571321539835406' />
 </head>
 <body>
