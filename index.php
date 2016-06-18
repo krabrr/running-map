@@ -15,8 +15,9 @@
   <link rel='stylesheet' href='css/run.css'>
   <link rel='shortcut icon' href='images/favicon.png'>
 
-  <meta property='og:title' content='RUNNING MAP' />
+  <meta property='og:title' content='Running Map' />
   <meta property='og:url' content='http://nbaramichai.com/running-map/' />
+  <meta property='og:description' content='Map for runner' />
   <meta property='og:site_name' content='nbaramichai' />
   <meta property='og:image' content='http://nbaramichai.com/running-map/images/preview.jpg' />
   <meta property='fb:app_id' content='1571321539835406' />
