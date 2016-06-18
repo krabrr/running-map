@@ -105,14 +105,14 @@ function showMoreInfo(layerID) {
     dateInfo = document.getElementById('info-date'),
     distanceInfo = document.getElementById('info-distance'),
     linkInfo = document.getElementById('info-link');
-  
+
   currentId = feature.properties.id;
   titleInfo.innerHTML = feature.properties.name;
   dateInfo.innerHTML = '<span class="bold">Date :</span> ' + feature.properties.dateDisplay;
   distanceInfo.innerHTML = '<span class="bold">Distance :</span> ' + feature.properties.distanceDisplay;
   linkInfo.innerHTML = '<span class="bold">Website :</span> <a href="' + feature.properties.link + '">'
     + feature.properties.linkDisplay + '</a>';
-  
+
   if (bookmarkedIds.indexOf(currentId) < 0) {
     bookmarkIcon.className = 'ion-ios-star-outline info-bookmark-icon';
     bookmarkIcon.style.color = '#d3d3d3';
@@ -139,12 +139,12 @@ function updateBookmarkList() {
   var i, att, bookmarkId, container, icon, node, nodeContent,
     caret, exportButtonContainer, exportButton, menu, item,
     bookmarkPanel = document.getElementById('bookmark-panel');
-  
+
   // remove all child except dropdown
   while (bookmarkPanel.firstChild && bookmarkPanel.firstChild.className != 'btn-group') {
     bookmarkPanel.removeChild(bookmarkPanel.firstChild);
   }
-  
+
   if (!bookmarkedIds.length) {
     node = document.createElement('p');
     nodeContent = document.createTextNode('No Favorite Event');
@@ -152,7 +152,7 @@ function updateBookmarkList() {
     bookmarkPanel.insertBefore(node, bookmarkPanel.firstChild);
     return;
   }
-  
+
   for (i = 0; i < bookmarkedIds.length; i++) {
     bookmarkId = bookmarkedIds[i];
     feature = featureMap[bookmarkId];
@@ -369,17 +369,17 @@ function convertToDate(parts) {
 function exportICS() {
   var i, id, feature, result = '', date, description,
     element = document.createElement('a');
-  
+
   result += 'BEGIN:VCALENDAR\n';
   result += 'VERSION:2.0\n';
-  
+
   for (i = 0; i < bookmarkedIds.length; i++) {
     id = bookmarkedIds[i];
     feature = featureMap[id];
     date = feature.properties.date;
     date = date.replace(/\-/g, '');
     lngLat = feature.geometry.coordinates;
-    description = 'Distances - ' + feature.properties.distanceDisplay + '\\n\\n' + 
+    description = 'Distances - ' + feature.properties.distanceDisplay + '\\n\\n' +
       'Link - ' + feature.properties.link;
 
     result += 'BEGIN:VEVENT\n';
@@ -390,9 +390,9 @@ function exportICS() {
     result += 'GEO:' + lngLat[1] + ';' + lngLat[0] + '\n';
     result += 'END:VEVENT\n';
   }
-  
+
   result += 'END:VCALENDAR';
-  
+
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(result));
   element.setAttribute('download', 'run-events.ics');
   element.style.display = 'none';
@@ -404,7 +404,7 @@ function exportICS() {
 function exportCSV() {
   var i, id, feature, result = '', date, dateDisplay,
       description, element = document.createElement('a');
-  
+
   result += 'Subject,Start Date,All Day Event,Description\n';
   for (i = 0; i < bookmarkedIds.length; i++) {
     id = bookmarkedIds[i];
@@ -412,16 +412,16 @@ function exportCSV() {
     date = new Date(feature.properties.date);
     dateDisplay = date.getDate().toString() + '/' + (date.getMonth() + 1).toString() + '/' +
       date.getFullYear().toString();
-    description = 'Distances - ' + feature.properties.distanceDisplay + ' | ' + 
+    description = 'Distances - ' + feature.properties.distanceDisplay + ' | ' +
       'Link - ' + feature.properties.link;
-    
+
     result += feature.properties.name + ',';
     result += dateDisplay + ',';
     result += 'True,';
     result += description + ',';
     result += '\n';
   }
-  
+
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(result));
   element.setAttribute('download', 'run-events.csv');
   element.style.display = 'none';
