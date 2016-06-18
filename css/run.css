@@ -303,3 +303,15 @@ body {
   margin: 10px auto 2px auto;
   width: 100%;
 }
+
+.bookmark-help {
+  float: right;
+  margin: 4px 2px 0 0;
+}
+
+.help-text {
+  margin-top: 14px;
+}
+.help-img {
+  width: 100%;
+}

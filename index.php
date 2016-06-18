@@ -170,8 +170,8 @@
         <input id='search-submit-button' class='btn btn-primary' type='button' value='Search' onclick='filterMarkers()'>
       </form>
     </div>
-    <div id='bookmark-panel' class='right-panel-content'>
 
+    <div id='bookmark-panel' class='right-panel-content'>
       <!-- Single button -->
       <div class='btn-group'>
         <button type='button' class='btn btn-secondary dropdown-toggle right-panel-export-bookmark' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
@@ -183,6 +183,48 @@
         </div>
       </div>
 
+      <a class='bookmark-help' data-toggle='modal' data-target='#myModal'>How to import events to your calendar</a>
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id='myModal' class='modal fade' role='dialog'>
+    <div class='modal-dialog'>
+
+      <!-- Modal content-->
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal'>&times;</button>
+          <h4 class='modal-title'>How to import events to your calendar</h4>
+        </div>
+        <div class='modal-body'>
+          <p class='help-text'>1. Bookmark your favorite events.</p>
+          <img class='help-img' src='images/help-1.jpg' alt='help-1'>
+          <p class='help-text'>2. Click export button.</p>
+          <img class='help-img' src='images/help-2.jpg' alt='help-2'>
+          <p class='help-text'>3. If you use Mac, just click the .ics file.</p>
+          <img class='help-img' src='images/help-3.jpg' alt='help-3'>
+          <p class='help-text'>4. It will open Calendar App. Select destination calender and click ok.</p>
+          <img class='help-img' src='images/help-4.jpg' alt='help-4'>
+          <p class='help-text'>5. All your favorite events will be added to calendar.</p>
+          <img class='help-img' src='images/help-5.jpg' alt='help-5'>
+          <p class='help-text'>6. For Google Calendar. Click gear icon and then click setting.</p>
+          <img class='help-img' src='images/help-6.jpg' alt='help-6'>
+          <p class='help-text'>7. Click Calendars.</p>
+          <img class='help-img' src='images/help-7.jpg' alt='help-7'>
+          <p class='help-text'>8. Click Import calendar.</p>
+          <img class='help-img' src='images/help-8.jpg' alt='help-8'>
+          <p class='help-text'>9. Select .ics or .cvs file to import. Select destination calendar and click import.</p>
+          <img class='help-img' src='images/help-9.jpg' alt='help-9'>
+          <p class='help-text'>10. All your favorite events will be added to calendar</p>
+          <img class='help-img' src='images/help-10.jpg' alt='help-10'>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+        </div>
+
+      </div>
 
     </div>
   </div>
