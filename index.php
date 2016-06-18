@@ -157,8 +157,8 @@
           Export Events
         </button>
         <div class='dropdown-menu'>
-          <a id='icalendar' class='dropdown-item' href='#'>iCalendar</a>
-          <a id='gcalendar' class='dropdown-item' href='#'>Google Calendar</a>
+          <a id='ics' class='dropdown-item' href='#'>.ics</a>
+          <a id='csv' class='dropdown-item' href='#'>.csv</a>
         </div>
       </div>
 

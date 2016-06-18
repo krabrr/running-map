@@ -11,8 +11,8 @@ var map, markers, layerIDs = [], featureMap = {},
   bookmarkPanel = document.getElementById('bookmark-panel'),
   bookmarkInfo = document.getElementById('info-bookmark'),
   bookmarkIcon = document.getElementById('info-bookmark-icon'),
-  iCalendar = document.getElementById('icalendar'),
-  gCalendar = document.getElementById('gcalendar'),
+  icsExport = document.getElementById('ics'),
+  csvExport = document.getElementById('csv'),
   popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false
@@ -34,8 +34,8 @@ function initial(data) {
   searchButton.addEventListener('click', buttonClickedHandler);
   bookmarkButton.addEventListener('click', buttonClickedHandler);
   bookmarkInfo.addEventListener('click', bookmarkClickedHandler);
-  iCalendar.addEventListener('click', exportICalendar);
-  gCalendar.addEventListener('click', exportGCalendar);
+  icsExport.addEventListener('click', exportICS);
+  csvExport.addEventListener('click', exportCSV);
 }
 
 function mapOnLoad() {
@@ -366,47 +366,28 @@ function convertToDate(parts) {
   return new Date(year, month - 1, day);
 }
 
-function exportICalendar() {
-  var i, id, feature, result = '', date,
+function exportICS() {
+  var i, id, feature, result = '', date, description,
     element = document.createElement('a');
   
-//  BEGIN:VCALENDAR
-//  VERSION:2.0
-//  PRODID:-//ZContent.net//Zap Calendar 1.0//EN
-//    CALSCALE:GREGORIAN
-//    METHOD:PUBLISH
-//    BEGIN:VEVENT
-//    SUMMARY:Abraham Lincoln
-//    UID:2008-04-28-04-15-56-62-@americanhistorycalendar.com
-//    SEQUENCE:0
-//    STATUS:CONFIRMED
-//    TRANSP:TRANSPARENT
-//    RRULE:FREQ=YEARLY;INTERVAL=1;BYMONTH=2;BYMONTHDAY=12
-//    DTSTART:20080212
-//    DTEND:20080213
-//    DTSTAMP:20150421T141403
-//    CATEGORIES:U.S. Presidents,Civil War People
-//    LOCATION:Hodgenville\, Kentucky
-//    GEO:37.5739497;-85.7399606
-//    DESCRIPTION:Born February 12\, 1809\nSixteenth President (1861-1865)\n\n\n
-//    \nhttp://AmericanHistoryCalendar.com
-//  URL:http://americanhistorycalendar.com/peoplecalendar/1,328-abraham-lincol
-//  n
-//  END:VEVENT
-//  END:VCALENDAR
-  
   result += 'BEGIN:VCALENDAR\n';
+  result += 'VERSION:2.0\n';
   
   for (i = 0; i < bookmarkedIds.length; i++) {
     id = bookmarkedIds[i];
     feature = featureMap[id];
     date = feature.properties.date;
-    date= date.replace(/\-/g, '');
+    date = date.replace(/\-/g, '');
+    lngLat = feature.geometry.coordinates;
+    description = 'Distances - ' + feature.properties.distanceDisplay + '\\n\\n' + 
+      'Link - ' + feature.properties.link;
+
     result += 'BEGIN:VEVENT\n';
     result += 'SUMMARY:' + feature.properties.name + '\n';
     result += 'DTSTART:' + date + '\n';
-    result += 'DESCRIPTION: Distances ' + feature.properties.distanceDisplay + '\n';
-    result += 'URL:' + feature.properties.link + '\n';
+    result += 'DESCRIPTION:' + description + '\n';
+    //result += 'URL:' + feature.properties.link + '\n';
+    result += 'GEO:' + lngLat[1] + ';' + lngLat[0] + '\n';
     result += 'END:VEVENT\n';
   }
   
@@ -420,6 +401,31 @@ function exportICalendar() {
   document.body.removeChild(element);
 }
 
-function exportGCalendar() {
-
+function exportCSV() {
+  var i, id, feature, result = '', date, dateDisplay,
+      description, element = document.createElement('a');
+  
+  result += 'Subject,Start Date,All Day Event,Description\n';
+  for (i = 0; i < bookmarkedIds.length; i++) {
+    id = bookmarkedIds[i];
+    feature = featureMap[id];
+    date = new Date(feature.properties.date);
+    dateDisplay = date.getDate().toString() + '/' + (date.getMonth() + 1).toString() + '/' +
+      date.getFullYear().toString();
+    description = 'Distances - ' + feature.properties.distanceDisplay + ' | ' + 
+      'Link - ' + feature.properties.link;
+    
+    result += feature.properties.name + ',';
+    result += dateDisplay + ',';
+    result += 'True,';
+    result += description + ',';
+    result += '\n';
+  }
+  
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(result));
+  element.setAttribute('download', 'run-events.csv');
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
 }
